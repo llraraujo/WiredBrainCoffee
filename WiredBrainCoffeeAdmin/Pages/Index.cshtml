@@ -22,6 +22,22 @@
                     <a asp-page="help" class="btn btn-success">Request Help</a>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    The Basics
+                </div>
+                <div class="card-body">
+                    <p>Hello, today is @DateTime.Today.Date.ToString("dd/MM/yyy")</p>
+                    @{
+                        var temperature = 55;
+                    }
+                    <p>The current temperature is @temperature degress.</p>
+                    @if(temperature < 60)
+                    {
+                        <p>We recommed a coat unitl it warms up @(60 - temperature) degrees. </p>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
