@@ -2,6 +2,10 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+
+    // Seta a propriedade Layout da página para ser o arquivo informado. 
+    // Caso o arquivo não seja informado, o Layout padrão será o informado no arquivo "_ViewStart.cshtml"
+    // Layout = "Shared/_LayoutFluid.cshtml";
 }
 
 <div class="container-fluid dashboard">
@@ -9,19 +13,18 @@
     <hr />
     <div class="row">
         <div class="col-md-6">
-            
+            <h2>Latest Survey Results</h2>
+            <table class="table table-striped table-bordered">
+                @foreach(var item in Model.SurveyResults)
+                {
+                    <tr>
+                        <td>@item.Question</td>
+                        <td>@item.Answer</td>
+                    </tr>
+                }
+            </table>
         </div>
         <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    Request Help
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Contact our IT Team</h5>
-                    <p class="card-text">Having an issue with the site? Let us know!</p>
-                    <a asp-page="help" class="btn btn-success">Request Help</a>
-                </div>
-            </div>
             <div class="card">
                 <div class="card-header">
                     The Basics
@@ -32,12 +35,22 @@
                         var temperature = 55;
                     }
                     <p>The current temperature is @temperature degress.</p>
-                    @if(temperature < 60)
+                    @if (temperature < 60)
                     {
                         <p>We recommed a coat unitl it warms up @(60 - temperature) degrees. </p>
                     }
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    Request Help
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Contact our IT Team</h5>
+                    <p class="card-text">Having an issue with the site? Let us know!</p>
+                    <a asp-page="help" class="btn btn-success">Request Help</a>
+                </div>
+            </div>            
         </div>
     </div>
 </div>
