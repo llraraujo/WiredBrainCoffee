@@ -11,7 +11,7 @@ using WiredBrainCoffeeAdmin.Data;
 
 namespace WiredBrainCoffeeAdmin.Migrations
 {
-    [DbContext(typeof(WiredContext))]
+    [DbContext(typeof(IProductRepository))]
     [Migration("20230922015607_ChangePropertyName")]
     partial class ChangePropertyName
     {
