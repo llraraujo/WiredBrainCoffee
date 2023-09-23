@@ -12,6 +12,8 @@ builder.Services.AddDbContext<WiredContext>(options =>
             builder.Configuration.GetConnectionString("WiredBrain")));
 
 builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ITicketService, TicketService>(options =>
+        options.BaseAddress = new Uri("https://wiredbraincoffeeadmin.azurewebsites.net/api/tickets"));
 
 var app = builder.Build();
 
